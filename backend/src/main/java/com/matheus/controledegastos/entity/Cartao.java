@@ -1,31 +1,64 @@
 package com.matheus.controledegastos.entity;
 
-import java.util.ArrayList;
+import java.io.Serializable;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-import lombok.AllArgsConstructor;
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.Setter;
-
-@Getter @Setter @EqualsAndHashCode @AllArgsConstructor
 @Entity
 @Table(name = "tb_cartoes")
-public class Cartao {
+public class Cartao implements Serializable {
 	
+	private static final long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
 	private String nomeCartao;
 	
-	@OneToMany(mappedBy = "cartao")
-	private List<Compra> compras = new ArrayList<>();
+	
+	@OneToMany(fetch = FetchType.EAGER, mappedBy = "cartao", cascade = CascadeType.ALL)
+	private List<Compra> compras;
+
+	public Cartao() {}
+	
+	public Cartao(Long id, String nomeCartao, List<Compra> compras) {
+		this.id = id;
+		this.nomeCartao = nomeCartao;
+		this.compras = compras;
+	}
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public String getNomeCartao() {
+		return nomeCartao;
+	}
+
+	public void setNomeCartao(String nomeCartao) {
+		this.nomeCartao = nomeCartao;
+	}
+
+	public List<Compra> getCompras() {
+		return compras;
+	}
+
+	public void setCompras(List<Compra> compras) {
+		this.compras = compras;
+	}
+
+	
+	
 }

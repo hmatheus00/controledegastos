@@ -1,5 +1,6 @@
 package com.matheus.controledegastos.entity;
 
+import java.io.Serializable;
 import java.time.LocalDateTime;
 
 import javax.persistence.Entity;
@@ -10,16 +11,13 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-import lombok.AllArgsConstructor;
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.Setter;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
-@Getter @Setter @EqualsAndHashCode @AllArgsConstructor
 @Entity
 @Table(name = "tb_compras")
-public class Compra {
+public class Compra implements Serializable {
 	
+	private static final long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
@@ -31,8 +29,100 @@ public class Compra {
 	private Integer parcelasPagas;
 	private Integer totalParcelas;
 	
+	@JsonIgnore
 	@ManyToOne
 	@JoinColumn(name = "cartao_id")
 	private Cartao cartao;
 
+	public Compra() {}
+	
+	public Compra(Long id, String comprador, String vendedor, String produto, LocalDateTime data, Boolean isParcelado,
+			Integer parcelasPagas, Integer totalParcelas, Cartao cartao) {
+		this.id = id;
+		this.comprador = comprador;
+		this.vendedor = vendedor;
+		this.produto = produto;
+		this.data = data;
+		this.isParcelado = isParcelado;
+		this.parcelasPagas = parcelasPagas;
+		this.totalParcelas = totalParcelas;
+		this.cartao = cartao;
+	}
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public String getComprador() {
+		return comprador;
+	}
+
+	public void setComprador(String comprador) {
+		this.comprador = comprador;
+	}
+
+	public String getVendedor() {
+		return vendedor;
+	}
+
+	public void setVendedor(String vendedor) {
+		this.vendedor = vendedor;
+	}
+
+	public String getProduto() {
+		return produto;
+	}
+
+	public void setProduto(String produto) {
+		this.produto = produto;
+	}
+
+	public LocalDateTime getData() {
+		return data;
+	}
+
+	public void setData(LocalDateTime data) {
+		this.data = data;
+	}
+
+	public Boolean getIsParcelado() {
+		return isParcelado;
+	}
+
+	public void setIsParcelado(Boolean isParcelado) {
+		this.isParcelado = isParcelado;
+	}
+
+	public Integer getParcelasPagas() {
+		return parcelasPagas;
+	}
+
+	public void setParcelasPagas(Integer parcelasPagas) {
+		this.parcelasPagas = parcelasPagas;
+	}
+
+	public Integer getTotalParcelas() {
+		return totalParcelas;
+	}
+
+	public void setTotalParcelas(Integer totalParcelas) {
+		this.totalParcelas = totalParcelas;
+	}
+
+	public Cartao getCartao() {
+		return cartao;
+	}
+
+	public void setCartao(Cartao cartao) {
+		this.cartao = cartao;
+	}
+
+	
+	
+
+	
 }
