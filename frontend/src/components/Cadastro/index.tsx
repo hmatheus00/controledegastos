@@ -42,6 +42,10 @@ export default function Cadastro() {
                     <Form.Label>Quantidade de parcelas</Form.Label>
                     <Form.Control type="number" placeholder="Quantidade de parcelas" />
                 </Form.Group>
+                <Form.Group>
+                    <Form.Label>Data</Form.Label>
+                    <Form.Control type="date"/>
+                </Form.Group>
                 <br />
                 <Form.Group controlId="exampleForm.ControlTextarea1">
                     <Form.Label>Descrição</Form.Label>
