@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.time.LocalDateTime;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -11,7 +12,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 
 @Entity
 @Table(name = "tb_compras")
@@ -28,10 +29,10 @@ public class Compra implements Serializable {
 	private Boolean isParcelado;
 	private Integer parcelasPagas;
 	private Integer totalParcelas;
-	
-	@JsonIgnore
-	@ManyToOne
-	@JoinColumn(name = "cartao_id")
+		
+	@JsonBackReference
+	@ManyToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name = "cartao_id", referencedColumnName = "id")
 	private Cartao cartao;
 
 	public Compra() {}
