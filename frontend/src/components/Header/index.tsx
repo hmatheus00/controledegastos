@@ -5,10 +5,10 @@ export default function Header() {
 
         <>
             <Navbar className="px-3" bg="dark" variant="dark">
-                <Navbar.Brand href="#home">Dashboard</Navbar.Brand>
+                <Navbar.Brand href="/">Home</Navbar.Brand>
                 <Nav className="mr-auto">
-                    <Nav.Link href="#features">Cadastrar</Nav.Link>
-                    <Nav.Link href="#pricing">Extrato</Nav.Link>
+                    <Nav.Link href="/cadastrar">Cadastrar</Nav.Link>
+                    <Nav.Link href="/extrato">Extrato</Nav.Link>
                 </Nav>
             </Navbar>
         </>

@@ -1,13 +1,8 @@
-import Cadastro from "./pages/Cadastro";
-import Extrato from "./pages/Extrato";
-import Header from "./components/Header";
+import Routes from "./Routes";
 
 function App() {
   return (
-    <>
-      <Header />
-      <Extrato />
-    </>
+    <Routes />
   );
 }
 
