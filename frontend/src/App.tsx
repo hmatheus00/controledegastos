@@ -1,5 +1,5 @@
-import Cadastro from "./components/Cadastro";
-import Extrato from "./components/Extrato";
+import Cadastro from "./pages/Cadastro";
+import Extrato from "./pages/Extrato";
 import Header from "./components/Header";
 
 function App() {
