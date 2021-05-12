@@ -47,9 +47,7 @@ public class CompraController {
 		Compra compra = service.atualizarParcelasPagas(id);
 		
 		return ResponseEntity.ok().body(compra);
-		
-		
-		
+
 	}
 	
 }

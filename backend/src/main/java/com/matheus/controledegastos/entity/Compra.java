@@ -25,6 +25,7 @@ public class Compra implements Serializable {
 	private String comprador;
 	private String vendedor;
 	private String produto;
+	private Double valor;
 	private LocalDateTime data;
 	private Boolean isParcelado;
 	private Integer parcelasPagas;
@@ -37,12 +38,13 @@ public class Compra implements Serializable {
 
 	public Compra() {}
 	
-	public Compra(Long id, String comprador, String vendedor, String produto, LocalDateTime data, Boolean isParcelado,
+	public Compra(Long id, String comprador, String vendedor, String produto, Double valor, LocalDateTime data, Boolean isParcelado,
 			Integer parcelasPagas, Integer totalParcelas, Cartao cartao) {
 		this.id = id;
 		this.comprador = comprador;
 		this.vendedor = vendedor;
 		this.produto = produto;
+		this.valor = valor;
 		this.data = data;
 		this.isParcelado = isParcelado;
 		this.parcelasPagas = parcelasPagas;
@@ -64,6 +66,14 @@ public class Compra implements Serializable {
 
 	public void setComprador(String comprador) {
 		this.comprador = comprador;
+	}	
+
+	public Double getValor() {
+		return valor;
+	}
+
+	public void setValor(Double valor) {
+		this.valor = valor;
 	}
 
 	public String getVendedor() {

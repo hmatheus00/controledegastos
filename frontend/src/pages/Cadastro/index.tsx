@@ -1,5 +1,3 @@
-
-import Footer from "../../components/Footer";
 import FormCadastro from "../../components/Form";
 import Header from "../../components/Header";
 
