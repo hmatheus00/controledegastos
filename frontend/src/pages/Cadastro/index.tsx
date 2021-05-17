@@ -6,8 +6,8 @@ export default function Cadastro() {
         <>
             <Header />
             <h1 className="px-5">Cadastrar compra</h1>
-            <FormCadastro />
-            
+            <FormCadastro/>
+
         </>
     );
 }

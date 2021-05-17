@@ -19,7 +19,7 @@ export default function TableExtract() {
     }, [refresh]);
 
     const refreshPage = () => {
-        setRefresh(refresh+1);
+        setRefresh(refresh + 1);
     }
 
 
@@ -42,7 +42,6 @@ export default function TableExtract() {
                         <th>Vendedor</th>
                         <th>Produto</th>
                         <th>Valor</th>
-                        <th>Parcelado</th>
                         <th>Parcelas</th>
                         <th>Pagas</th>
                     </tr>
@@ -56,7 +55,6 @@ export default function TableExtract() {
                                 <td>{compra.vendedor}</td>
                                 <td>{compra.produto}</td>
                                 <td>{`R$${compra.valor}`}</td>
-                                <td>{compra.isParcelado.toString()}</td>
                                 <td>{compra.totalParcelas}</td>
                                 <td>{compra.parcelasPagas}</td>
                             </tr>

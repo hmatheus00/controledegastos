@@ -1,7 +1,7 @@
 package com.matheus.controledegastos.entity;
 
 import java.io.Serializable;
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -26,8 +26,7 @@ public class Compra implements Serializable {
 	private String vendedor;
 	private String produto;
 	private Double valor;
-	private LocalDateTime data;
-	private Boolean isParcelado;
+	private LocalDate data;
 	private Integer parcelasPagas;
 	private Integer totalParcelas;
 		
@@ -38,7 +37,7 @@ public class Compra implements Serializable {
 
 	public Compra() {}
 	
-	public Compra(Long id, String comprador, String vendedor, String produto, Double valor, LocalDateTime data, Boolean isParcelado,
+	public Compra(Long id, String comprador, String vendedor, String produto, Double valor, LocalDate data, Boolean isParcelado,
 			Integer parcelasPagas, Integer totalParcelas, Cartao cartao) {
 		this.id = id;
 		this.comprador = comprador;
@@ -46,7 +45,6 @@ public class Compra implements Serializable {
 		this.produto = produto;
 		this.valor = valor;
 		this.data = data;
-		this.isParcelado = isParcelado;
 		this.parcelasPagas = parcelasPagas;
 		this.totalParcelas = totalParcelas;
 		this.cartao = cartao;
@@ -92,20 +90,12 @@ public class Compra implements Serializable {
 		this.produto = produto;
 	}
 
-	public LocalDateTime getData() {
+	public LocalDate getData() {
 		return data;
 	}
 
-	public void setData(LocalDateTime data) {
+	public void setData(LocalDate data) {
 		this.data = data;
-	}
-
-	public Boolean getIsParcelado() {
-		return isParcelado;
-	}
-
-	public void setIsParcelado(Boolean isParcelado) {
-		this.isParcelado = isParcelado;
 	}
 
 	public Integer getParcelasPagas() {

@@ -15,13 +15,15 @@ public class ConfigurationCors {
 
     @Bean
     public FilterRegistrationBean<Filter> corsFilter() {
-        UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
+        
+    	UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
         CorsConfiguration config = new CorsConfiguration().applyPermitDefaultValues();
         config.addAllowedMethod(HttpMethod.PUT);
         config.addAllowedMethod(HttpMethod.DELETE);
         source.registerCorsConfiguration("/**", config);
         FilterRegistrationBean<Filter> bean = new FilterRegistrationBean<>(new CorsFilter(source));
         bean.setOrder(0);
+        
         return bean;
     }
 }

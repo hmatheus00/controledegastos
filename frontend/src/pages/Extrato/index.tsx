@@ -3,6 +3,7 @@ import PieChart from "../../components/PieChart";
 import Header from '../../components/Header';
 
 export default function Extrato() {
+
     return (
         <>
             <Header />
