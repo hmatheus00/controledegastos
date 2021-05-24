@@ -13,6 +13,15 @@ import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+@NoArgsConstructor
+@AllArgsConstructor
+@Setter
+@Getter
 @Entity
 @Table(name = "tb_cartoes")
 public class Cartao implements Serializable {
@@ -28,38 +37,36 @@ public class Cartao implements Serializable {
 	@OneToMany(fetch = FetchType.EAGER, mappedBy = "cartao")
 	private List<Compra> compras;
 
-	public Cartao() {}
-	
-	public Cartao(Long id, String nomeCartao, List<Compra> compras) {
-		this.id = id;
-		this.nomeCartao = nomeCartao;
-		this.compras = compras;
-	}
+//	public Cartao() {}
+//	
+//	public Cartao(Long id, String nomeCartao, List<Compra> compras) {
+//		this.id = id;
+//		this.nomeCartao = nomeCartao;
+//		this.compras = compras;
+//	}
+//
+//	public Long getId() {
+//		return id;
+//	}
+//
+//	public void setId(Long id) {
+//		this.id = id;
+//	}
+//
+//	public String getNomeCartao() {
+//		return nomeCartao;
+//	}
+//
+//	public void setNomeCartao(String nomeCartao) {
+//		this.nomeCartao = nomeCartao;
+//	}
+//
+//	public List<Compra> getCompras() {
+//		return compras;
+//	}
+//
+//	public void setCompras(List<Compra> compras) {
+//		this.compras = compras;
+//	}
 
-	public Long getId() {
-		return id;
-	}
-
-	public void setId(Long id) {
-		this.id = id;
-	}
-
-	public String getNomeCartao() {
-		return nomeCartao;
-	}
-
-	public void setNomeCartao(String nomeCartao) {
-		this.nomeCartao = nomeCartao;
-	}
-
-	public List<Compra> getCompras() {
-		return compras;
-	}
-
-	public void setCompras(List<Compra> compras) {
-		this.compras = compras;
-	}
-
-	
-	
 }

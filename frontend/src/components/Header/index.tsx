@@ -1,15 +1,14 @@
-import { Nav, Navbar } from "react-bootstrap"
+import { Navbar } from "react-bootstrap"
 
 export default function Header() {
     return (
 
         <>
             <Navbar className="px-3" bg="dark" variant="dark">
-                <Navbar.Brand href="/">Home</Navbar.Brand>
-                <Nav className="mr-auto">
-                    <Nav.Link href="/cadastrar">Cadastrar</Nav.Link>
-                    <Nav.Link href="/extrato">Extrato</Nav.Link>
-                </Nav>
+                <Navbar.Brand className="fw-bold" href="/">Home</Navbar.Brand>
+                <Navbar.Brand className="fw-light" href="/cadastrar">Cadastrar compra</Navbar.Brand>
+                <Navbar.Brand className="fw-light" href="/cadastrarCartao">Cadastrar cartão</Navbar.Brand>
+                <Navbar.Brand className="fw-light" href="/extrato">Extrato</Navbar.Brand>
             </Navbar>
         </>
     );

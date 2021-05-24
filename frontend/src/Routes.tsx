@@ -1,5 +1,6 @@
 import { Route, BrowserRouter, Switch } from 'react-router-dom'
-import Cadastro from './pages/Cadastro';
+import CadastroCompra from './pages/CadastroCompra';
+import CadastroCartao from './pages/CadastroCartao';
 import Extrato from './pages/Extrato';
 import Home from './pages/Home';
 
@@ -16,7 +17,10 @@ export default function Routes() {
                     <Extrato />
                 </Route>
                 <Route path="/cadastrar" exact>
-                    <Cadastro />
+                    <CadastroCompra />
+                </Route>
+                <Route path="/cadastrarCartao" exact>
+                    <CadastroCartao />
                 </Route>
             </Switch>
         </BrowserRouter>

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { Form, Button } from 'react-bootstrap'
 import { BASE_URL } from '../../utils/request';
@@ -17,9 +17,10 @@ const initialValues = {
     descricao: ''
 }
 
-export default function FormCadastro() {
+export default function FormCompra() {
 
     const [compra, setCompra] = useState(initialValues);
+    const [cartoes, setCartoes] = useState([])
 
     const setInput = (novosCampos) => {
         setCompra(compra => ({ ...compra, ...novosCampos }))
@@ -27,13 +28,26 @@ export default function FormCadastro() {
 
     const onSubmit = (event) => {
         event.preventDefault();
-        console.log(compra);
         axios.post(`${BASE_URL}/compras`, compra)
             .then(res => {
                 console.log(res);
             })
             .then(error => console.log(error));
     }
+
+    useEffect(() => {
+        async function getItems() {
+            try {
+                const data = await axios.get(`${BASE_URL}/cartoes`);
+                setCartoes(data.data);
+            }catch(error){
+                console.log(error);
+            }
+        }
+        getItems();
+    }
+        , []);
+
 
     return (
         <>
@@ -56,11 +70,13 @@ export default function FormCadastro() {
                 </Form.Group>
                 <Form.Group>
                     <Form.Label>Cartão</Form.Label>
-                    <Form.Control as="select" onChange={e => setInput({ cartao: {id: (parseFloat(e.target.value))} })}>
-                        <option>Selecione o cartão</option>
-                        <option value={1}>Digio</option>
-                        <option value={2}>Next</option>
-                        <option value={3}>Nubank</option>
+                    <Form.Control as="select" onChange={e => setInput({ cartao: { id: (parseFloat(e.target.value)) } })}>
+                        <option>Selecione um cartão</option>
+                        {
+                            cartoes.map(cartao => (
+                                <option key={cartao.id} value={cartao.id}>{cartao.nomeCartao}</option>
+                            ))
+                        }
                     </Form.Control>
                 </Form.Group>
                 <Form.Group>
