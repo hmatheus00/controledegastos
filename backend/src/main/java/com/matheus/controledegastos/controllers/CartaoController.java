@@ -15,6 +15,9 @@ import org.springframework.web.bind.annotation.RestController;
 import com.matheus.controledegastos.entity.Cartao;
 import com.matheus.controledegastos.services.CartaoService;
 
+import io.swagger.annotations.ApiResponse;
+import io.swagger.annotations.ApiResponses;
+
 @RestController
 @RequestMapping("/cartoes")
 public class CartaoController {
@@ -22,6 +25,7 @@ public class CartaoController {
 	@Autowired
 	private CartaoService service;
 	
+	@ApiResponses(value = { @ApiResponse(code = 200, message = "Retorna lista de cartões juntamente com as compras associadas a cada cartão")})
 	@GetMapping
 	public ResponseEntity<List<Cartao>> findAll(){
 		
@@ -31,6 +35,7 @@ public class CartaoController {
 		
 	}
 	
+	@ApiResponses(value = { @ApiResponse(code = 201, message = "Cartão criado!")})
 	@PostMapping
 	@ResponseStatus(HttpStatus.CREATED)
 	public Cartao adicionar(@RequestBody Cartao cartao) {

@@ -14,20 +14,26 @@ import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 
+import io.swagger.annotations.ApiModelProperty;
+
 @Entity
 @Table(name = "tb_compras")
 public class Compra implements Serializable {
 	
 	private static final long serialVersionUID = 1L;
 	@Id
+	@ApiModelProperty(value = "Identificador da compra")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private String comprador;
 	private String vendedor;
 	private String produto;
+	@ApiModelProperty(value = "Valor do produto comprado")
 	private Double valor;
 	private LocalDate data;
+	@ApiModelProperty(value = "Total de parcelas pagas")
 	private Integer parcelasPagas;
+	@ApiModelProperty(value = "Total de parcelas")
 	private Integer totalParcelas;
 		
 	@JsonBackReference
