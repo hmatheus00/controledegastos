@@ -5,7 +5,7 @@ create table tb_compras (
         parcelas_pagas integer,
         produto varchar(255),
         total_parcelas integer,
-        valor double,
+        valor float,
         vendedor varchar(255),
         cartao_id bigint,
         primary key (id)
