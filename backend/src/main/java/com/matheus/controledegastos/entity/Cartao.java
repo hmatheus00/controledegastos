@@ -3,13 +3,7 @@ package com.matheus.controledegastos.entity;
 import java.io.Serializable;
 import java.util.List;
 
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
@@ -27,17 +21,12 @@ public class Cartao implements Serializable {
 	
 	@ApiModelProperty(value = "Nome do cartão")
 	private String nomeCartao;
-	
-	@JsonManagedReference
-	@OneToMany(fetch = FetchType.EAGER, mappedBy = "cartao")
-	private List<Compra> compras;
 
 	public Cartao() {}
 	
-	public Cartao(Long id, String nomeCartao, List<Compra> compras) {
+	public Cartao(Long id, String nomeCartao) {
 		this.id = id;
 		this.nomeCartao = nomeCartao;
-		this.compras = compras;
 	}
 
 	public Long getId() {
@@ -54,14 +43,6 @@ public class Cartao implements Serializable {
 
 	public void setNomeCartao(String nomeCartao) {
 		this.nomeCartao = nomeCartao;
-	}
-
-	public List<Compra> getCompras() {
-		return compras;
-	}
-
-	public void setCompras(List<Compra> compras) {
-		this.compras = compras;
 	}
 
 }

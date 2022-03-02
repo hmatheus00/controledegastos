@@ -35,8 +35,7 @@ public class Compra implements Serializable {
 	private Integer parcelasPagas;
 	@ApiModelProperty(value = "Total de parcelas")
 	private Integer totalParcelas;
-		
-	@JsonBackReference
+
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "cartao_id", referencedColumnName = "id")
 	private Cartao cartao;
@@ -127,9 +126,4 @@ public class Compra implements Serializable {
 	public void setCartao(Cartao cartao) {
 		this.cartao = cartao;
 	}
-
-	
-	
-
-	
 }
