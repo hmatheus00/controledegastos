@@ -1,58 +1,61 @@
 package com.matheus.controledegastos.services;
 
-import java.util.List;
-
+import com.matheus.controledegastos.entity.Compra;
+import com.matheus.controledegastos.repositories.CompraRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.matheus.controledegastos.entity.Compra;
-import com.matheus.controledegastos.repositories.CompraRepository;
+import java.util.Collections;
+import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class CompraService {
 
 	@Autowired
 	private CompraRepository repository;
-	
+
 	@Transactional(readOnly = true)
 	public Compra findById(Long id) {
-		if(repository.existsById(id)) {
-			Compra compra = repository.getOne(id);
-			return compra;
+		if (repository.existsById(id)) {
+			return repository.getOne(id);
 		}
 		return null;
 	}
-	
+
 	@Transactional(readOnly = true)
-	public List<Compra> findAll(){
-		List<Compra> compras = repository.findAll();
-		
-		return compras;
+	public List<Compra> findAll() {
+		return repository.findAll();
 	}
-	
+
 	@Transactional
 	public Compra insertCompra(Compra compra) {
 		return repository.save(compra);
 	}
-	
+
 	@Transactional
-	public Compra atualizarParcelasPagas(Long id) {
+	public List<Compra> atualizarParcelasPagas() {
+
+		List<Compra> compras = repository.findAll();
 		
-		if(!repository.existsById(id)) {
-			return null;
-		}
+		List<Compra> comprasAtualizadas = compras.stream().peek(compra -> {
+			if(compra.getParcelasPagas() < compra.getTotalParcelas()) {
+				compra.setParcelasPagas(compra.getParcelasPagas()+1);
+			}
+		}).collect(Collectors.toList());
 		
-		Compra compra = repository.getOne(id);
-		
-		if(compra.getParcelasPagas() < compra.getTotalParcelas()) {
-			compra.setParcelasPagas(compra.getParcelasPagas()+1);			
-		}
-		
-		return repository.save(compra);
-		
+		return repository.saveAll(comprasAtualizadas);
 	}
-	
-	
-	
+
+	@Transactional(readOnly = true)
+	public List findCompraByCartaoId(Long cartaoId) {
+		List<Compra> compras = repository.buscaCompraPorCartao(cartaoId);
+
+		if(compras.isEmpty()) {
+			return Collections.EMPTY_LIST;
+		}
+		return compras;
+	}
+
 }
