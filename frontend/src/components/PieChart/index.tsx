@@ -32,7 +32,7 @@ export default function PieChart() {
             options={{ ...options, labels: labels }}
             series={series}
             type="pie"
-            height="450"
+            height="350"
         />
     );
 }

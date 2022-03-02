@@ -15,7 +15,7 @@ export default function TableExtract() {
                 const compras = data.data;
                 setCompras(compras);
             } catch (error) {
-                return 'Conexão não estabelecida!'
+                return 'Conexão não estabelecida!';
             }
         }
         getCompras();
@@ -23,26 +23,37 @@ export default function TableExtract() {
     }
         , [refresh])
 
-    const refreshPage = () => {
+    const refreshTable = () => {
         setRefresh(refresh + 1);
+    }
+
+    async function updateParcelas() {
+        try {
+            const data = await axios.put(`${BASE_URL}/compras`);
+            const compras = data.data;
+            setCompras(compras);
+            refreshTable();
+        } catch (error) {
+            return 'Conexão não estabelecida!';
+        }
     }
 
 
 
     return (
         <>
-            <Row className="justify-content-center align-items-center">
-                <Col sm={10} >
-                    <h1>Extrato</h1>
+            <Row className="justify-content-center">
+                <Col sm={8}>
+                    <h1 >Extrato</h1>
                 </Col>
-                <Col>
-                    <Button onClick={refreshPage} >Atualizar</Button>
+                <Col sm={4}>
+                    <Button size="lg" onClick={updateParcelas}>Update Parcelas</Button>
                 </Col>
             </Row>
-            <Table responsive striped hover variant="dark">
+            <Table responsive striped hover variant="dark" className="px-5 py-2">
                 <thead>
                     <tr>
-                        <th>Data</th>
+                        <th>Data</th>   
                         <th>Comprador</th>
                         <th>Vendedor</th>
                         <th>Produto</th>

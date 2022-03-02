@@ -5,12 +5,11 @@ export default function Extrato() {
 
     return (
         <>
-            <div className="row mt-2 px-2">
+            <div className="row px-5 py-2">
                 <div className="col-sm">
                     <Table />
                 </div>
-                <div className="col-sm px-2">
-                    <h1>Porcentagem de compra</h1>
+                <div className="col-sm py-5">
                     <PieChart />
                 </div>
             </div>

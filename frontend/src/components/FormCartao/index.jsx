@@ -34,6 +34,7 @@ export default function FormCartao() {
 
     return (
         <>
+            <h1 className="px-5 py-2">Cadastrar Cartão</h1>
             <Form className="px-5 py-2" >
                 <Form.Group controlId="formBasicComprador">
                     <Form.Label>Nome</Form.Label>
